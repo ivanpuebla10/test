@@ -1,7 +1,11 @@
 import React from 'react'
+import { useParams } from 'react-router-dom';
 // import { useSelector } from "react-redux";
 
 const ThoughtDetails = () => {
+    const { _id } = useParams();
+    console.log(typeof _id)
+
     const thoughts = [
     { 
       _id:1,
@@ -24,13 +28,15 @@ const ThoughtDetails = () => {
     ];
 
     const thought = thoughts.map((thought) => {
+        if(thought._id === +_id){
         return (
             <div className="thought_container" key={thought._id}>
                 {thought.title}
                 {thought.description}
                 {thought.mood}
             </div>
-      )});
+      )}}
+      );
       
       
       return <>{thought}</>;
