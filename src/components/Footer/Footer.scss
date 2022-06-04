@@ -1,0 +1,17 @@
+@import '../../styles.scss';
+
+.footer_container{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.6em;
+    font-size: 1rem;
+    font-weight: 550;
+    font-family: $principal_font;
+}
+
+.footer_container div nav{
+    margin: 1em;
+}
+
