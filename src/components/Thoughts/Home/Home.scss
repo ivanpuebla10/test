@@ -1,0 +1,16 @@
+.home-container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.home-title {
+    margin: 2em 2em 0.5em 2em;
+}
+
+.home-paragraph {
+    margin: 0.5em 1em 2em 1em;
+    color:rgb(136, 136, 136)
+}
