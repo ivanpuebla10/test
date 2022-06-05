@@ -1,19 +1,20 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useParams } from 'react-router-dom';
 import './ThoughtDetails.scss';
 import { LeftOutlined, CloudOutlined } from "@ant-design/icons";
 import { Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
-// import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from 'react-redux';
+import { getThoughtById } from '../../../features/thought/thoughtSlice';
 
 const ThoughtDetails = () => {
+    const { thought } = useSelector((state) => state.thought);
     const { _id } = useParams();
-    console.log(typeof _id)
+    const dispatch = useDispatch()
 
-    const  thoughts  = useSelector( (state) => state.thoughts )
-    const allThoughts = thoughts || []
-    
-    let thoughtsLS =  JSON.parse(localStorage.getItem("thoughts")) || []; 
+    useEffect( () => {
+        dispatch(getThoughtById(_id));
+      }, []);
+
     // const thoughts = [
     // { 
     //   _id:1,
@@ -35,25 +36,25 @@ const ThoughtDetails = () => {
     // },
     // ];
 
-    const thought = thoughtsLS.map((thought) => {
-        if(thought._id === +_id){
+    const thoughtDetails = thought.map((thought) => {
+        if(thought.thought._id === +_id){
         return (
-            <div className="thought_container" key={thought._id}>
+            <div className="thought_container" key={thought.thought._id}>
                 <span>
                 <Link to="/">
                 <LeftOutlined style={{ margin: '2em'}}/>
                 <CloudOutlined/>
                 </Link>
-                {thought.title}
+                {thought.thought.title}
                 </span>                
-                <p>{thought.description}</p>
-                <p>{thought.mood}</p>
+                <p>{thought.thought.description}</p>
+                <p>{thought.thought.mood}</p>
             </div>
       )}}
       );
       
       
-      return <>{thought}</>;
+      return <>{thoughtDetails}</>;
 }
 
 export default ThoughtDetails

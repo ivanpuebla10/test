@@ -6,23 +6,18 @@ import { Modal } from 'antd';
 
 
 export const AddThought = ({visible, setVisible}) => {
-const  thought  = useSelector( (state) => state.thoughts )
-const allThoughts = thought || []
+const navigate = useNavigate();
 
-let thoughtsLS =  JSON.parse(localStorage.getItem("thoughts")) || []; 
-
-const navigate = useNavigate()
+const thoughts = useSelector((state) => state.thought);
+const allThoughts = thoughts || []
 
   const [formData, setFormData] = useState({
-    _id:"",
+    _id: allThoughts.thoughts.length+1,
     title:"",
     description:"",
     mood: "",
   });
-  const {title,description,mood} = formData
-  useEffect(() => {
-    setFormData({_id: thoughtsLS.length +1  , ...thought})
-   },[thought])
+  const {_id, title,description,mood} = formData
 
   const dispatch = useDispatch()
 
@@ -35,24 +30,20 @@ const navigate = useNavigate()
 
 const handleOk = async () => {
     await dispatch(addThought(formData))
-    await setFormData(()=>({
-        title:"",
-        description:"",
-        mood: "",
-    }));
-    await setVisible(false)
+    // await setVisible(false)
+    setTimeout(() => {
+        navigate("/thought/" + _id);
+      }, 1000);
 }
 
 const handleCancel = () => {
     console.log("hey funciona el cancel")
     setVisible(false)
    };
-   //   <div className="add-thought-form">
-      {/* <form onSubmit={onSubmit}> */}
-      {/* </form> */}
-//   </div>;
+
   return (
       <Modal title="Add a thought" visible={visible} onOk={handleOk} onCancel={handleCancel}>
+      <label>What is going through your head right now?</label>
       <input
         value={title} 
         type="text"
@@ -60,6 +51,7 @@ const handleCancel = () => {
         onChange={onChange}
         name="title"
       />
+      <label>Is there any evidence your thought is true?</label>
       <input
         value={description} 
         type="text"
