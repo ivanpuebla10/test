@@ -1,13 +1,18 @@
-import React from 'react'
+import { useState } from 'react';
+import { AddThought } from './AddThought/AddThought';
 import Thought from './Thought/Thought'
 import './Thoughts.scss';
-// import { useSelector } from "react-redux";
 
 const Thoughts = () => {
+    const [isModalVisible, setIsModalVisible] = useState(false);
+    const showModal = () => {
+        setIsModalVisible(true);
+      };
   return (
     <div className="thoughts_container">
         <Thought/>
-        <button>Add a Thought</button>
+        <AddThought visible={isModalVisible} setVisible={setIsModalVisible}/>
+        <button onClick={() => showModal()}>ADD A THOUGHT</button>
     </div>
   )
 }

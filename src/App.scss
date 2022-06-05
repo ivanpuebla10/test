@@ -6,3 +6,17 @@ a {
     all: unset;
     cursor: pointer;
 }
+
+.app {
+    display:flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 100vh;
+}
+
+.app-container {
+    height: 90vh;
+}
+// .Footer {
+//     height: 5vh;
+// }

@@ -3,18 +3,21 @@ import './App.scss';
 import Thoughts from './components/Thoughts/Thoughts';
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import ThoughtDetails from './components/Thoughts/ThoughtDetails/ThoughtDetails';
-import Footer from './components/Footer/Footer';
+import NavBar from './components/NavBar/NavBar';
+import { AddThought } from './components/Thoughts/AddThought/AddThought';
 
 function App() {
   return (
-    <div className="App">
+    <div className="app">
       <Router>
+      <div className="app-container">
       <Routes> 
       <Route path="/" element={<Thoughts/>}/>
       <Route path="/thought/:_id" element={<ThoughtDetails />} />
-      {/* <Route path="*" element={<NotFound />} /> */}
+      <Route path="/addthought" element={<AddThought/>}/>
       </Routes>
-      <Footer/>
+      </div>
+      <NavBar/>
       </Router>
     </div>
   );
