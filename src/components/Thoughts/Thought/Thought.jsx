@@ -13,9 +13,9 @@ const Thought = () => {
 
         return (
             <div className="thought_container" key={thought.thought._id}>
-                <Link to={"/thought/" + thought.thought._id} className="individual_thought_box">
-                    <span>
-                        <CloudOutlined style={{ margin: '2em'}}/>
+                <Link to={"/thought/" + thought.thought._id} >
+                    <span className="individual_thought_box">
+                        {/* <CloudOutlined style={{ margin: '2em'}}/> */}
                         <span>{thought.thought.title}</span>
                         <RightOutlined style={{ margin: '2em'}} />
                     </span>

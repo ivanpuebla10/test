@@ -8,6 +8,10 @@ a {
     font-weight: 600;
     font-size: 1.7em;
     word-wrap: break-word;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 20vh;
 }
 
 .app {
