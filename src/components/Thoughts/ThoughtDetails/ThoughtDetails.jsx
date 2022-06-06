@@ -15,27 +15,6 @@ const ThoughtDetails = () => {
         dispatch(getThoughtById(_id));
       }, []);
 
-    // const thoughts = [
-    // { 
-    //   _id:1,
-    //   title: "Thought 1",
-    //   description: "Description 1",
-    //   mood: "Mood 1"
-    // },
-    // { 
-    //   _id:2,
-    //   title: "Thought 2",
-    //   description: "Description 2",
-    //   mood: "Mood 2"
-    // },
-    // { 
-    //   _id:3,
-    //   title: "Thought 3",
-    //   description: "Description 3",
-    //   mood: "Mood 3"
-    // },
-    // ];
-
     const thoughtDetails = thought.map((thought) => {
         if(thought.thought._id === +_id){
         return (
@@ -48,8 +27,9 @@ const ThoughtDetails = () => {
                 </Link>
                 </span>  
                 <div className="content-box">
+                <p>Feeling: {thought.thought.mood}</p>
                 <p className="question_paragraph">Is there any evidence your thought is true?</p>
-                <p>{thought.thought.description}</p>
+                <p className="answer_paragraph">{thought.thought.description}</p>
                 </div>              
             </div>
       )}}

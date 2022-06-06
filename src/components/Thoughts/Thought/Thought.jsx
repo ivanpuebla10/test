@@ -8,26 +8,6 @@ const Thought = () => {
     const allThoughts = thoughts || []
 
     let thoughtsLS =  JSON.parse(localStorage.getItem("thoughts")) || []; 
-    // const thoughts = [
-    // { 
-    //   _id:1,
-    //   title: "Thought 1",
-    //   description: "Description 1",
-    //   mood: "Mood 1"
-    // },
-    // { 
-    //   _id:2,
-    //   title: "Thought 2",
-    //   description: "Description 2",
-    //   mood: "Mood 2"
-    // },
-    // { 
-    //   _id:3,
-    //   title: "Thought 3",
-    //   description: "Description 3",
-    //   mood: "Mood 3"
-    // },
-    // ];
 
     const thought = thoughtsLS.map((thought) => {
 

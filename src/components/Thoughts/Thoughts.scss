@@ -18,6 +18,8 @@
     color: white;
     cursor: pointer;
     margin: 0.5em;
+    font-weight: 700;
+    font-size: 1.5em;
 }
 
 .addThought {
@@ -25,20 +27,51 @@
     flex-direction: column;
     label {
         font-weight: 700;
+        font-size: 1.2em;
+        margin: 0.5em;
     }
-    input {
+    textarea {
         background-color: rgb(224, 224, 224);
         border: 0;
         height: 10em;
+        font-size: 1.4em;
+        margin: 0.5em;
+    }
+    select {
+        background-color: rgb(224, 224, 224);
+        border: 0;
+        height: 2em;
+        font-size: 1.2em;
+        margin: 0.5em; 
     }
 }
 
 .modal {
-    button {
+    background-color: white;
+    .cancel-button {
         background-color: $buttons_color;
         border: 0;
         color: white;
         cursor: pointer;
         margin: 0.5em;
+        width: 22vw;
+        border-radius: 30px;
+        height: 8vh;
+        font-size: 1.2em;
+
+
+    }
+    .done-button {
+        background-color: $buttons_color;
+        border: 0;
+        color: white;
+        cursor: pointer;
+        margin: 0.5em;
+        width: 60vw;
+        font-weight: 700;
+        border-radius: 30px;
+        height: 8vh;
+        font-size: 1.3em;
+
     }
 }

@@ -2,16 +2,13 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addThought, getThoughts } from '../../features/thought/thoughtSlice';
 import Header from '../Header/Header';
-import { AddThought } from './AddThought/AddThought';
 import Home from './Home/Home';
 import Thought from './Thought/Thought'
 import './Thoughts.scss';
-import ReactDOM from 'react-dom';
 import Modal from 'react-modal';
 import { useNavigate } from 'react-router-dom';
 
-const Thoughts = ({visible, setVisible}) => {
-const [isModalVisible, setIsModalVisible] = useState(false);
+const Thoughts = () => {
 const navigate = useNavigate();
 const thoughts = useSelector((state) => state.thought);
 const allThoughts = thoughts || []
@@ -37,7 +34,7 @@ const onChange = (e)=>{
 const handleOk = async () => {
     await dispatch(addThought(formData))
     await setIsOpen(false);
-        // await navigate("/thought/" + _id)
+    await navigate("/thought/" + _id)
 }
 
 useEffect( () => {
@@ -49,35 +46,36 @@ const openModal =() => {
       setIsOpen(true);
     }
   
-// const afterOpenModal=() => {
-//       // references are now sync'd and can be accessed.
-//     }
-  
 const closeModal=() => {
       setIsOpen(false);
+      setFormData({ 
+        _id: allThoughts.thoughts.length+1,
+        title:"",
+        description:"",
+        mood: "",
+      })
 }
 
   return (
     <div className="thoughts_container">
         {thoughts?.thoughts?.length>0 ? 
         <>
+        <Header/>
         <Modal
         className="modal"
         isOpen={modalIsOpen}
-        // onAfterOpen={afterOpenModal}
         onRequestClose={closeModal}
       >
         <form className="addThought" >
       <label>How are you feeling?</label>
-      <input
-        value={mood} 
-        type="text"
-        onChange={onChange}
-        name="mood"
-        required
-      />
+      <select value={mood} name="mood" onChange={onChange} required>
+      <option value="value1">I'm feeling...</option>
+  <option value="Happy">Happy</option>
+  <option value="Neutral">Neutral</option>
+  <option value="Sad">Sad</option>
+</select>
       <label>What is going through your head right now?</label>
-      <input
+      <textarea
         value={title} 
         type="text"
         onChange={onChange}
@@ -85,7 +83,7 @@ const closeModal=() => {
         required
       />
       <label>Is there any evidence your thought is true?</label>
-      <input
+      <textarea
         value={description} 
         type="text"
         onChange={onChange}
@@ -93,35 +91,31 @@ const closeModal=() => {
         required
       />
       </form>
-      <button onClick={closeModal}>close</button>
-      <button onClick={handleOk}>Done</button>
+      <button className="cancel-button" onClick={closeModal}>Cancel</button>
+      <button className="done-button" onClick={handleOk}>DONE</button>
       </Modal>
-        {/* <AddThought visible={isModalVisible} setVisible={setIsModalVisible} onOk={handleOk} onCancel={handleCancel}/> */}
         <Thought/>
         <button className="add_button" onClick={() => openModal()}>ADD A THOUGHT</button>
         </>
          : 
       <>
       <Header/>
-      {/* <AddThought visible={isModalVisible} setVisible={setIsModalVisible} onOk={handleOk} onCancel={handleCancel}/> */}
       <Home /> 
       <Modal
       className="modal"
         isOpen={modalIsOpen}
-        // onAfterOpen={afterOpenModal}
         onRequestClose={closeModal}
       >
         <form className="addThought" >
       <label>How are you feeling?</label>
-      <input
-        value={mood} 
-        type="text"
-        onChange={onChange}
-        name="mood"
-        required
-      />
+      <select value={mood} name="mood" onChange={onChange} required>
+      <option value="value1">I'm feeling...</option>
+  <option value="Happy">Happy</option>
+  <option value="Neutral">Neutral</option>
+  <option value="Sad">Sad</option>
+</select>
       <label>What is going through your head right now?</label>
-      <input
+      <textarea
         value={title} 
         type="text"
         onChange={onChange}
@@ -129,7 +123,7 @@ const closeModal=() => {
         required
       />
       <label>Is there any evidence your thought is true?</label>
-      <input
+      <textarea
         value={description} 
         type="text"
         onChange={onChange}
@@ -137,13 +131,11 @@ const closeModal=() => {
         required
       />
       </form>
-      <button onClick={closeModal}>close</button>
-      <button onClick={handleOk}>Done</button>
+      <button className="cancel-button" onClick={closeModal}>Cancel</button>
+      <button className="done-button" onClick={handleOk}>DONE</button>
       </Modal>
-        {/* <AddThought visible={isModalVisible} setVisible={setIsModalVisible} onOk={handleOk} onCancel={handleCancel}/> */}
         <Thought/>
         <button className="add_button" onClick={() => openModal()}>ADD A THOUGHT</button>
-      {/* <button className="add_button" onClick={() => showModal()}>ADD A THOUGHT</button>       */}
       </>
         }
         
