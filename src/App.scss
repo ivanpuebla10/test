@@ -5,6 +5,9 @@
 a {
     all: unset;
     cursor: pointer;
+    font-weight: 600;
+    font-size: 1.7em;
+    word-wrap: break-word;
 }
 
 .app {
@@ -15,7 +18,7 @@ a {
 }
 
 .app-container {
-    height: 90vh;
+    height: 100vh;
 }
 // .Footer {
 //     height: 5vh;

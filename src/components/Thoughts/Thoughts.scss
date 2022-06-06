@@ -6,14 +6,39 @@
     text-align: center;
     justify-content: space-between;
     height: 100%;
+    background-color: white;
 }
 
-button {
+.add_button {
     background-color: $buttons_color;
     width: 95wh;
-    height: 8vh;
+    height: 15vh;
+    max-height: 10vh;
     border: 0;
     color: white;
     cursor: pointer;
     margin: 0.5em;
+}
+
+.addThought {
+    display: flex;
+    flex-direction: column;
+    label {
+        font-weight: 700;
+    }
+    input {
+        background-color: rgb(224, 224, 224);
+        border: 0;
+        height: 10em;
+    }
+}
+
+.modal {
+    button {
+        background-color: $buttons_color;
+        border: 0;
+        color: white;
+        cursor: pointer;
+        margin: 0.5em;
+    }
 }

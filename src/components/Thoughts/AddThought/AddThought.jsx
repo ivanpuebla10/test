@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from 'react-redux'
 import { addThought } from "../../../features/thought/thoughtSlice";
 import { useNavigate } from "react-router-dom";
 import { Modal } from 'antd';
+import './AddThought.scss';
+
 
 
 export const AddThought = ({visible, setVisible}) => {
@@ -30,10 +32,9 @@ const allThoughts = thoughts || []
 
 const handleOk = async () => {
     await dispatch(addThought(formData))
-    // await setVisible(false)
-    setTimeout(() => {
-        navigate("/thought/" + _id);
-      }, 1000);
+    await setVisible(false)
+    await navigate("/thought/" + _id)
+
 }
 
 const handleCancel = () => {
@@ -42,30 +43,33 @@ const handleCancel = () => {
    };
 
   return (
-      <Modal title="Add a thought" visible={visible} onOk={handleOk} onCancel={handleCancel}>
+      <Modal className="modal" visible={visible} onOk={handleOk} onCancel={handleCancel}>
+      <form className="addThought" >
+      <label>How are you feeling?</label>
+      <input
+        value={mood} 
+        type="text"
+        onChange={onChange}
+        name="mood"
+        required
+      />
       <label>What is going through your head right now?</label>
       <input
         value={title} 
         type="text"
-        placeholder="title"
         onChange={onChange}
         name="title"
+        required
       />
       <label>Is there any evidence your thought is true?</label>
       <input
         value={description} 
         type="text"
-        placeholder="description"
         onChange={onChange}
         name="description"
+        required
       />
-        <input
-        value={mood} 
-        type="text"
-        placeholder="mood"
-        onChange={onChange}
-        name="mood"
-      />
+      </form>
       </Modal>
 )
 };

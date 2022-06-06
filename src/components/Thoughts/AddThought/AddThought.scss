@@ -1,0 +1,24 @@
+@import '../../../styles.scss';
+
+.addThought {
+    display: flex;
+    flex-direction: column;
+    label {
+        font-weight: 700;
+    }
+    input {
+        background-color: rgb(224, 224, 224);
+        border: 0;
+        height: 10em;
+    }
+}
+
+.modal {
+    button {
+        background-color: $buttons_color;
+        border: 0;
+        color: white;
+        cursor: pointer;
+        margin: 0.5em;
+    }
+}

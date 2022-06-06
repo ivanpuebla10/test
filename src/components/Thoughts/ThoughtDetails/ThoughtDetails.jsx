@@ -39,16 +39,18 @@ const ThoughtDetails = () => {
     const thoughtDetails = thought.map((thought) => {
         if(thought.thought._id === +_id){
         return (
-            <div className="thought_container" key={thought.thought._id}>
-                <span>
+            <div className="thought_container_detail" key={thought.thought._id}>
+                <span className="details_title">
                 <Link to="/">
-                <LeftOutlined style={{ margin: '2em'}}/>
-                <CloudOutlined/>
-                </Link>
+                <LeftOutlined style={{ margin: '1em'}}/>
+                <CloudOutlined style={{ margin: '1em'}}/>
                 {thought.thought.title}
-                </span>                
+                </Link>
+                </span>  
+                <div className="content-box">
+                <p className="question_paragraph">Is there any evidence your thought is true?</p>
                 <p>{thought.thought.description}</p>
-                <p>{thought.thought.mood}</p>
+                </div>              
             </div>
       )}}
       );
