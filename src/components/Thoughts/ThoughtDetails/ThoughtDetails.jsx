@@ -20,10 +20,10 @@ const ThoughtDetails = () => {
         return (
             <div className="thought_container_detail" key={thought.thought._id}>
                 <span className="details_title">
-                <Link to="/">
-                <LeftOutlined style={{ margin: '1em'}}/>
-                <CloudOutlined style={{ margin: '1em'}}/>
-                {thought.thought.title}
+                <Link to="/" style={{ display: 'flex' , justifyContent:"center", alignItems:"center"}}>
+                <span><LeftOutlined style={{ margin: '0.5em'}}/></span>
+                <span><CloudOutlined style={{ margin: '0.5em'}}/></span>
+                <span>{thought.thought.title}</span>
                 </Link>
                 </span>  
                 <div className="content-box">
