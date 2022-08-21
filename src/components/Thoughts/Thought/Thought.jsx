@@ -4,13 +4,11 @@ import { RightOutlined, CloudOutlined } from "@ant-design/icons";
 import { useSelector } from 'react-redux';
 
 const Thought = () => {
-    const  thoughts  = useSelector( (state) => state.thoughts )
+    const  {thoughts}  = useSelector( (state) => state.thought )
+    
     const allThoughts = thoughts || []
 
-    let thoughtsLS =  JSON.parse(localStorage.getItem("thoughts")) || []; 
-
-    const thought = thoughtsLS.map((thought) => {
-
+    const thought = allThoughts.map((thought) => {
         return (
             <div className="thought_container" key={thought.thought._id}>
                 <Link to={"/thought/" + thought.thought._id} style={{display: "flex",flexDirection: "column", alignItems: "center"}} >

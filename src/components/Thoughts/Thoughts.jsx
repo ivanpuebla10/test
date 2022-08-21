@@ -11,6 +11,8 @@ import { useNavigate } from 'react-router-dom';
 const Thoughts = () => {
 const navigate = useNavigate();
 const thoughts = useSelector((state) => state.thought);
+const [modalIsOpen, setIsOpen] = useState(false);
+
 const allThoughts = thoughts || []
 
 const [formData, setFormData] = useState({
@@ -19,10 +21,12 @@ const [formData, setFormData] = useState({
     description:"",
     mood: "",
   });
-
 const {_id, title,description,mood} = formData
 
 const dispatch = useDispatch()
+useEffect( () => {
+  dispatch(getThoughts());
+}, []);
 
 const onChange = (e)=>{
     setFormData((prevState)=> ({
@@ -36,11 +40,6 @@ const handleOk = async () => {
     await setIsOpen(false);
     await navigate("/thought/" + _id)
 }
-
-useEffect( () => {
-      dispatch(getThoughts());
-    }, []);
-    const [modalIsOpen, setIsOpen] = useState(false);
 
 const openModal =() => {
       setIsOpen(true);

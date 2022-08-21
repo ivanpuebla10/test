@@ -1,7 +1,9 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
+let thoughts =  JSON.parse(localStorage.getItem("thoughts")) || []; 
+
 const initialState = {
-    thoughts: [],
+    thoughts: thoughts? thoughts :[],
     thought: [],
   };
 
@@ -20,7 +22,7 @@ const initialState = {
     }
   );
   export const getThoughts = createAsyncThunk(
-    "thought/getthought",
+    "thought/getthoughts",
     async () => {
       try {
         let thoughts =  JSON.parse(localStorage.getItem("thoughts")) || []; 
